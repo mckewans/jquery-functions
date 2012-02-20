@@ -1,0 +1,39 @@
+/* EXAMPLE
+
+<ul id="gateType">
+<div class="title">Title OF<a id="gth" href="#" title="hide">HIDE</a></div>
+<li>blah</li>
+<li>blah</li>
+<li>blah</li>
+</ul>
+
+*/
+
+		(function( $ ){
+  			$.fn.showhide = function() {
+  		
+  			var $this = $(this);
+  			var $parent = $this.closest('ul');
+  			
+			$this.toggle(function() {
+				$this.text("SHOW");
+				$parent.find('li').slideUp();
+				return false;
+			}, function() {
+				$this.text("HIDE");
+				$parent.find('li').slideDown();
+				return false;
+			});
+
+  		};
+		})( jQuery );
+
+
+
+/*
+
+USE:
+
+$("#gth").showhide();
+
+*/
