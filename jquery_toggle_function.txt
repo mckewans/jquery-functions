@@ -1,10 +1,16 @@
 /* EXAMPLE
 
-<ul id="gateType">
-<div class="title">Title OF<a id="gth" href="#" title="hide">HIDE</a></div>
-<li>blah</li>
-<li>blah</li>
-<li>blah</li>
+<ul id="OptionOne">
+	<div class="title">Title Of<a id="opt1" href="#" title="hide">HIDE</a></div>
+		<li>blah</li>
+		<li>blah</li>
+		<li>blah</li>
+</ul>
+<ul id="OptionTwo">
+	<div class="title">Title Of<a id="opt2" href="#" title="hide">HIDE</a></div>
+		<li>blah</li>
+		<li>blah</li>
+		<li>blah</li>
 </ul>
 
 */
@@ -29,11 +35,11 @@
 		})( jQuery );
 
 
-
 /*
 
 USE:
 
-$("#gth").showhide();
+$("#opt1").showhide();
+$("#opt2").showhide();
 
 */
