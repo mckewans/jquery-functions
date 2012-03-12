@@ -6,12 +6,6 @@
 		<li>blah</li>
 		<li>blah</li>
 </ul>
-<ul id="OptionTwo">
-	<div class="title">Title Of<a id="opt2" href="#" title="hide">HIDE</a></div>
-		<li>blah</li>
-		<li>blah</li>
-		<li>blah</li>
-</ul>
 
 */
 
@@ -40,6 +34,5 @@
 USE:
 
 $("#opt1").showhide();
-$("#opt2").showhide();
 
 */
