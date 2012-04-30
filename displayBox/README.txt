@@ -1,0 +1,1 @@
+Built for a client who wanted a banner application similar to what the BBC had on it's new page. View the demo on my YouTube page http://youtu.be/7QpQy7Aov6I
