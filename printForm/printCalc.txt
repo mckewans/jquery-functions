@@ -13,14 +13,12 @@
 					if ($temp.val() == "") { 
 					$temp.parent().find('span').css('visibility','visible');
 					$temp.parent().find('span').text("Number Required");
-					//$temp.val("Number Requred");
 						
 					} else 
 					
 					if (!$temp.val().match(numpatt)) { 
 					$temp.parent().find('span').css('visibility','visible');
 					$temp.parent().find('span').text("Numbers Only");
-					//$temp.val("Numbers only.");
 
 					}
 					
