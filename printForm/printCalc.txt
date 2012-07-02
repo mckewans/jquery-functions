@@ -1,0 +1,124 @@
+<!-- Print weight calculator and form. Robert Gage-Smith (robgs-online.com) //-->
+<!-- CSS stylesheet required to hide span message tags before script //-->
+
+			<script type="text/javascript">		
+
+			$(function(){
+					
+				$.fn.checkNumbers = function() {
+					
+					var numpatt = '^[0-9]+$';
+					var $temp = $(this);
+					
+					if ($temp.val() == "") { 
+					$temp.parent().find('span').css('visibility','visible');
+					$temp.parent().find('span').text("Number Required");
+					//$temp.val("Number Requred");
+						
+					} else 
+					
+					if (!$temp.val().match(numpatt)) { 
+					$temp.parent().find('span').css('visibility','visible');
+					$temp.parent().find('span').text("Numbers Only");
+					//$temp.val("Numbers only.");
+
+					}
+					
+					else $temp.parent().find('span').css('visibility','hidden');
+					
+				};
+			
+				$('input[id=print-width]').blur(function() { $(this).checkNumbers(); });
+				$('input[id=print-height]').blur(function() { $(this).checkNumbers();});
+				$('input[id=page-count]').blur(function() { $(this).checkNumbers(); });
+				$('input[id=page-weight]').blur(function() { $(this).checkNumbers();});
+				
+				$('input[id=calcweight]').click(function(){
+	
+				var numpatt = '^[0-9]+$';
+				var pwidth = 	$('input[id=print-width]').val();
+				var pheight = 	$('input[id=print-height]').val();
+				var ptotal = 	$('input[id=page-count]').val();
+				var pweight = 	$('input[id=page-weight]').val();
+				var counter = 0;
+				
+					if (!pwidth.match(numpatt)) { 
+						$('#widthtag').css('visibility','visible');
+						counter += 1;
+						} else { 
+						$('#widthtag').css('visibility','hidden');
+						}
+					if(!pheight.match(numpatt)) { 
+						$('#heighttag').css('visibility','visible');
+						counter += 1;
+						} else { 
+						$('#heighttag').css('visibility','hidden');
+						}
+					if(!ptotal.match(numpatt)) { 
+						$('#pagestag').css('visibility','visible');
+						counter += 1;
+						} else { 
+						$('#pagestag').css('visibility','hidden');
+						}
+					if(!pweight.match(numpatt)) { 
+						$('#weighttag').css('visibility','visible');
+						counter += 1;
+						} else { 
+						$('#weighttag').css('visibility','hidden');
+						}
+					
+					var pageFinalSize = parseFloat((pwidth*pheight)/1000000);
+					var multPages = parseFloat(pageFinalSize * ptotal);
+					var multWeight = parseFloat((multPages * pweight)/2);
+					
+					/* ADD 2PC 4 INK TOLERANCE */
+					var plusInk = parseFloat(multWeight+((2.0/100)*multWeight));
+					
+					if(counter == 0) {
+					$('input[id=page-total]').val(Math.ceil(plusInk));
+					}
+				});
+				
+			});
+			
+</script>
+
+<form action="#" method="post" name="printCalc" id="printCalc">
+
+<h4 class="formheaders">Print Size</h4>
+<div id="pWidth">
+	<label for="print-width">*Page Width</label>
+	<input tabindex="1" size="20" type="text" id="print-width" title="print-width" placeholder="e.g. 210" value="" />
+	<div class='dateSpec'>mm</div>
+	<span class="message" id="widthtag">Page width is required</span>
+</div>
+<div id="pHeight">
+	<label for="print-height">*Page Height</label>
+	<input tabindex="2" size="20" type="text" id="print-height" title="print-height" placeholder="e.g. 297" value="" />
+	<div class='dateSpec'>mm</div>
+	<span class="message" id="heighttag">Page height is required</span>
+</div>
+			
+<h4 class="formheaders">Pages</h4>
+<div id="pTotal">
+	<label for="page-count">*Pages Required</label>
+	<input tabindex="3" size="20" type="text" id="page-count" title="page-count" placeholder="e.g. 32" value="" />
+	<div class='dateSpec'>pages</div>
+	<span class="message" id="pagestag">Page amount is required</span>
+</div>
+<div id="pWeight">
+	<label for="page-weight">*Page Weight</label>
+	<input tabindex="4" size="20" type="text" id="page-weight" title="page-weight" placeholder="e.g. 90" value="" />
+	<div class='dateSpec'>gsm</div>
+	<span class="message" id="weighttag">Page amount is required</span>
+</div>
+			
+<h4 class="formheaders">Final Printed Pages Weight</h4>			
+<input type="button" value="Calculate" name="Calculate" class="sub_button" id="calcweight" />
+			
+							
+<div id="pFinalWeight">
+<input size="20" type="text" id="page-total" title="page-total" value="" /><div class='dateSpec'>gsm</div>
+</div>
+										
+</form>
