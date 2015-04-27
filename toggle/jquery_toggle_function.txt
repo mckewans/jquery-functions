@@ -1,3 +1,9 @@
+/* IMPORTANT NOTE
+// Jquery toggle is no longer supported above 1.8
+// so this script will no longer work.
+*/
+
+
 /* EXAMPLE
 
 <ul id="OptionOne">
