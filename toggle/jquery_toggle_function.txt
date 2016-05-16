@@ -1,6 +1,5 @@
 /* IMPORTANT NOTE
 // Jquery toggle is no longer supported above 1.8
-// so this script will no longer work.
 */
 
 
@@ -21,24 +20,28 @@
 
 */
 
-		(function( $ ){
-  			$.fn.showhide = function() {
-  		
-  			var $this = $(this);
-  			var $parent = $this.closest('ul');
-  			
-			$this.toggle(function() {
-				$this.text("SHOW");
+(function( $ ){
+  	
+	$.fn.showhide = function() {
+  	var $this = $(this);
+		var $viz = true;
+		$this.on('click', function() {
+			var $parent = $this.parent().closest('ul');
+			if($viz == true) {
 				$parent.find('li').slideUp();
-				return false;
-			}, function() {
-				$this.text("HIDE");
+				$this.text("SHOW");
+				$viz = false;
+			}else if($viz == false){
 				$parent.find('li').slideDown();
-				return false;
-			});
-
-  		};
-		})( jQuery );
+				$this.text("HIDE");
+				$viz = true;	
+			}
+		});
+			
+  };
+ 
+ 
+})( jQuery );
 
 
 /*
